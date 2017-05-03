@@ -1,9 +1,78 @@
+//vec2.cpp (programmiersprache-aufgabenblatt-2)
+
 #include "vec2.hpp"
+#include <cmath>
 
 Vec2::Vec2(float a, float b) :
-	x{a},
-	y{b} {}
+	x_{a},
+	y_{b} {}
 
 Vec2::Vec2() :
-	x{0.0f},
-	y{0.0f} {}
+	x_{0.0f},
+	y_{0.0f} {}
+
+
+Vec2& Vec2::operator+=(Vec2 const& v)
+{
+	this->x_ += v.x_;
+	this->y_ += v.y_;
+
+	return *this;
+}
+
+Vec2 & Vec2::operator -= (Vec2 const & v)
+{
+	this->x_ -= v.x_;
+	this->y_ -= v.y_;
+
+	return *this;
+}
+
+Vec2 & Vec2::operator *= (float s)
+{
+	this->x_ *= s;
+	this->y_ *= s;
+
+	return *this;
+}
+
+Vec2 & Vec2::operator /=( float s )
+{
+	this->x_ /= s;
+	this->y_ /= s;
+
+	return *this;
+}
+
+Vec2 operator + ( Vec2 const & u , Vec2 const & v )
+{
+	Vec2 result{};
+	result.x_ = u.x_ + v.x_;
+	result.y_ = u.y_ + v.y_;
+	return result;
+}
+
+Vec2 operator - ( Vec2 const & u , Vec2 const & v )
+{
+	Vec2 result{};
+	result.x_ = u.x_ - v.x_;
+	result.y_ = u.y_ - v.y_;
+	return result;
+}
+
+Vec2 operator * (Vec2 const& v, float s) {
+	return Vec2 {v.x_ * s, v.y_ * s};
+}
+
+Vec2 operator / ( Vec2 const & v , float s )
+{
+	Vec2 result{};
+	result.x_ = v.x_ /s;
+	result.y_ = v.y_ /s;
+	return result;
+}
+
+Vec2 operator * ( float s , Vec2 const & v )
+{
+	return v*s;
+}
