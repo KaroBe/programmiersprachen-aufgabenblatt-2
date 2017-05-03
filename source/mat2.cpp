@@ -18,32 +18,32 @@ Mat2::Mat2() :
 	v22_{1.0f} {}
 
 //Matrizenmultiplikaton
-Vec2& Vec2::operator *= (Vec2 const& v)
+Mat2& Mat2::operator *= (Mat2 const& v)
 {
 	float old_v11 = this->v11_;
 	float old_v12 = this->v12_;
-	float old_v11 = this->v21_;
-	float old_v11 = this->v22_;
+	float old_v21 = this->v21_;
+	float old_v22 = this->v22_;
 
-	this->v11_ = old_v11 * v.v11_ + old_v12 * v.v21;
-	this->v12_ = old_v11 * v.v12_ + old_v12 * v.v22;
+	this->v11_ = old_v11 * v.v11_ + old_v12 * v.v21_;
+	this->v12_ = old_v11 * v.v12_ + old_v12 * v.v22_;
 
-	this->v21_ = old_v21 * v.v11_ + old_v22 * v.v21;
-	this->v22_ = old_v21 * v.v12_ + old_v22 * v.v22;
+	this->v21_ = old_v21 * v.v11_ + old_v22 * v.v21_;
+	this->v22_ = old_v21 * v.v12_ + old_v22 * v.v22_;
 
 	return *this;
 }
 
 //Matrizenmultiplikation
-Vec2 operator * (Vec2 const& u, Vec2 const& v)
+Mat2 operator * (Mat2 const& u, Mat2 const& v)
 {
-	Vec2 result;
+	Mat2 result;
 
-	result.v11_ = u.v11 * v.v11_ + u.v12 * v.v21;
-	result.v12_ = u.v11 * v.v12_ + u.v12 * v.v22;
+	result.v11_ = u.v11_ * v.v11_ + u.v12_ * v.v21_;
+	result.v12_ = u.v11_ * v.v12_ + u.v12_ * v.v22_;
 
-	result.v21_ = u.v21 * v.v11_ + u.v22 * v.v21;
-	result.v22_ = u.v21 * v.v12_ + u.v22 * v.v22;
+	result.v21_ = u.v21_ * v.v11_ + u.v22_ * v.v21_;
+	result.v22_ = u.v21_ * v.v12_ + u.v22_ * v.v22_;
 
 	return result;
 }

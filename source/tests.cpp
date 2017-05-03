@@ -3,6 +3,7 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 #include "vec2.hpp"
+#include "mat2.hpp"
 
 
 /*
@@ -219,7 +220,7 @@ TEST_CASE("describe_*=_operator_matrix", "[Mat2]")
 {
 	Mat2 mat0 {};
 	Mat2 mat1 {1,2,3,4};
-	Mat2 mat2 {0,0.5,1.5,-1};
+	Mat2 mat2 {0,0.5,0.1,-1};
 
 	mat0 *= mat1;
 	mat1 *= mat2;
