@@ -5,6 +5,7 @@
 #include "vec2.hpp"
 #include "mat2.hpp"
 #include <iostream>
+#include <cmath>
 
 /*
 
@@ -387,33 +388,12 @@ TEST_CASE("describe_inverse_matrix", "[Mat2]")
 	REQUIRE(0.0f == res2.v22_);
 }
 
-/*
 TEST_CASE("describe_rotate_matrix", "[Mat2]")
 {
-	Mat2 mat0 {};
-	Mat2 mat1 {1,2,3,4};
-	Mat2 mat2 {0,0.5,0.1,-1};
+	Mat2 res1 = make_rotation_mat2(1.0f);
 
-	Mat2 trans0 = make_rotation_mat2(phi);
-	Mat2 trans1 = make_rotation_mat2(phi);
-	Mat2 trans2 = make_rotation_mat2(phi);
-
-	REQUIRE(1.0f == res1.v11_);
-	REQUIRE(2.0f == res1.v12_);
-	REQUIRE(3.0f == res1.v21_);
-	REQUIRE(4.0f == res1.v22_);
-
-
-	REQUIRE(1.0f == res1.v11_);
-	REQUIRE(2.0f == res1.v12_);
-	REQUIRE(3.0f == res1.v21_);
-	REQUIRE(4.0f == res1.v22_);
-
-
-	REQUIRE(1.0f == res1.v11_);
-	REQUIRE(2.0f == res1.v12_);
-	REQUIRE(3.0f == res1.v21_);
-	REQUIRE(4.0f == res1.v22_);
+	REQUIRE(0.54030f == Approx(res1.v11_));
+	REQUIRE(0.84147f == Approx(res1.v12_));
+	REQUIRE(-0.84147f == Approx(res1.v21_));
+	REQUIRE(0.54030f == Approx(res1.v22_));
 }
-
-*/

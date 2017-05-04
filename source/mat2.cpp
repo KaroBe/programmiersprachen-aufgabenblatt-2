@@ -108,5 +108,6 @@ Mat2 transpose ( Mat2 const & m )
 //Rotationsmatrix von Winkel in Bogenmaß
 Mat2 make_rotation_mat2 ( float phi )
 {
-	return Mat2{};
+	return Mat2 {(float)cos(phi), (float)sin(phi),
+				-1.0f * (float)sin(phi), (float)cos(phi)};
 }
