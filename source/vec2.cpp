@@ -2,6 +2,7 @@
 
 #include "vec2.hpp"
 #include <cmath>
+#include <iostream>
 
 Vec2::Vec2(float a, float b) :
 	x_{a},
@@ -38,9 +39,16 @@ Vec2 & Vec2::operator *= (float s)
 
 Vec2 & Vec2::operator /=( float s )
 {
-	x_ /= s;
-	y_ /= s;
-
+	if (s == 0)
+	{
+		std::cout << "DIVISION BY ZERO";
+		return *this;
+	}
+	else
+	{
+		x_ /= s;
+		y_ /= s;
+	}
 	return *this;
 }
 
@@ -66,10 +74,18 @@ Vec2 operator * (Vec2 const& v, float s) {
 
 Vec2 operator / ( Vec2 const & v , float s )
 {
-	Vec2 result{};
-	result.x_ = v.x_ /s;
-	result.y_ = v.y_ /s;
-	return result;
+	if (s == 0)
+	{
+		std::cout << "DIVISION BY ZERO";
+		return v;
+	}
+	else
+	{
+		Vec2 result{};
+		result.x_ = v.x_ /s;
+		result.y_ = v.y_ /s;
+		return result;
+	}
 }
 
 Vec2 operator * ( float s , Vec2 const & v )

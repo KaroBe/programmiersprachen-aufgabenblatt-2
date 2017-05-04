@@ -89,15 +89,21 @@ TEST_CASE("describe_division_operator", "[Vec2]")
 	Vec2 v1{1.0f,2.0f};
 	Vec2 v2{0.0f,-2.0f};
 	float s = 5.0f;
+	float zero = 0.0f;
 
 	Vec2 result1 = v0/s;
 	Vec2 result2 = v1/s;
+	Vec2 result3 = v0/zero;
 
 	REQUIRE(0.0f == result1.x_);
 	REQUIRE(0.0f == result1.y_);
-	
+
 	REQUIRE(0.2f == result2.x_);
 	REQUIRE(0.4f == result2.y_);
+
+	REQUIRE(0.0f == result3.x_);
+	REQUIRE(0.0f == result3.y_);
+	
 }
 
 TEST_CASE("describe_mult_operator_skalar_first", "[Vec2]")
@@ -174,15 +180,21 @@ TEST_CASE("describe_/=_operator", "[Vec2]")
 	Vec2 v1{1.0f,2.0f};
 	Vec2 v2{0.0f,-2.0f};
 	float s = 5.0f;
+	float zero = 0.0f;
 
 	v0 /= s;
 	v1 /= s;
+	v2 /= zero;
 
 	REQUIRE(0.0f == v0.x_);
 	REQUIRE(0.0f == v0.y_);
 	
 	REQUIRE(0.2f == v1.x_);
 	REQUIRE(0.4f == v1.y_);
+
+	REQUIRE(0.0f == v0.x_);
+	REQUIRE(0.0f == v0.y_);
+	
 }
 
 /*
