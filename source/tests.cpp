@@ -1,15 +1,25 @@
 //tests.cpp (programmiersprache-aufgabenblatt-2)
 
+/*
+
+TESTS FOR
+
+VEC2
+MAT2
+
+*/
+
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 #include "vec2.hpp"
 #include "mat2.hpp"
+#include "color.hpp"
 #include <iostream>
 #include <cmath>
 
 /*
 
-TEST CASES for Constructors
+TEST CASES for Vec2 Constructors
 
 */
 
@@ -199,7 +209,7 @@ TEST_CASE("describe_/=_operator", "[Vec2]")
 
 /*
 
-TEST CASE for Matrix Multiplikation
+TEST CASE for Matrix Constructors
 
 */
 
@@ -228,6 +238,12 @@ TEST_CASE("describe_user_construktor_operator_matrix", "[Mat2]")
 	REQUIRE(1.5f == mat2.v21_);
 	REQUIRE(-1.0f == mat2.v22_);
 }
+
+/*
+
+TEST CASE for Matrix Multiplikation
+
+*/
 
 TEST_CASE("describe_*=_operator_matrix", "[Mat2]")
 {
@@ -277,7 +293,8 @@ int main(int argc, char *argv[])
 
 /*
 
-TEST CASE for Matrix * Vektor / Vetor * Matrix
+TEST CASE for Matrix * Vektor and Vetor * Matrix
+
 */
 
 TEST_CASE("describe_matrix*vektor", "[Mat2]")
@@ -408,4 +425,24 @@ TEST_CASE("describe_rotate_matrix", "[Mat2]")
 	REQUIRE(0.84147f == Approx(res1.v12_));
 	REQUIRE(-0.84147f == Approx(res1.v21_));
 	REQUIRE(0.54030f == Approx(res1.v22_));
+}
+
+/*
+
+TEST CASES for Color Constructors
+
+*/
+
+TEST_CASE("describe_construstors_color", "[Color]")
+{
+	Color c1{0.5f};
+	REQUIRE(0.5f == c1.r_);
+	REQUIRE(0.5f == c1.g_);
+	REQUIRE(0.5f == c1.b_);
+
+	Color c2{0.0f, 0.5f, 1.0f};
+
+	REQUIRE(0.0f == c2.r_);
+	REQUIRE(0.5f == c2.g_);
+	REQUIRE(1.0f == c2.b_);
 }
