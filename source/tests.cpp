@@ -4,7 +4,7 @@
 #include <catch.hpp>
 #include "vec2.hpp"
 #include "mat2.hpp"
-
+#include <iostream>
 
 /*
 
@@ -350,34 +350,44 @@ TEST_CASE("describe_transpose_matrix", "[Mat2]")
 	REQUIRE(-1.0f == res2.v22_);
 }
 
-/*
 TEST_CASE("describe_inverse_matrix", "[Mat2]")
 {
-	Mat2 mat0 {};
-	Mat2 mat1 {1,2,3,4};
+	Mat2 mat0 {}; //mat0 ist nicht invertierbar, return mat0
+	Mat2 mat1 {1.0f,2.0f,3.0f,4.0f};
 	Mat2 mat2 {0,0.5,0.1,-1};
+	
+	std::cout << mat1.v11_;
+	std::cout << mat1.v12_;
+	std::cout << mat1.v21_;
+	std::cout << mat1.v22_;
+
 
 	Mat2 res0 = inverse(mat0);
-	Mat2 res1 = inverse(mat1);
+	Mat2 erg = inverse(mat1);
 	Mat2 res2 = inverse(mat2);
 
-	REQUIRE(0.0f == res0.v11_);
-	REQUIRE(1.0f == res0.v12_);
+	std::cout << erg.v11_;
+	std::cout << erg.v12_;
+	std::cout << erg.v21_;
+	std::cout << erg.v22_;
+
+	REQUIRE(1.0f == res0.v11_);
+	REQUIRE(0.0f == res0.v12_);
 	REQUIRE(0.0f == res0.v21_);
 	REQUIRE(1.0f == res0.v22_);
 
-	REQUIRE(1.0f == res1.v11_);
-	REQUIRE(2.0f == res1.v12_);
-	REQUIRE(3.0f == res1.v21_);
-	REQUIRE(4.0f == res1.v22_);
+	REQUIRE(-2.0f == erg.v11_);
+	REQUIRE(1.0f == erg.v12_);
+	REQUIRE((3.0f/2.0f) == erg.v21_);
+	REQUIRE((-1.0f/2.0f) == erg.v22_);
 
-	REQUIRE(1.0f == res2.v11_);
-	REQUIRE(2.0f == res2.v12_);
-	REQUIRE(3.0f == res2.v21_);
-	REQUIRE(4.0f == res2.v22_);
-
+	REQUIRE(20.0f == res2.v11_);
+	REQUIRE(10.0f == res2.v12_);
+	REQUIRE(2.0f == res2.v21_);
+	REQUIRE(0.0f == res2.v22_);
 }
 
+/*
 TEST_CASE("describe_rotate_matrix", "[Mat2]")
 {
 	Mat2 mat0 {};

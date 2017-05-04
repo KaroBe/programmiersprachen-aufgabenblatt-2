@@ -2,6 +2,7 @@
 
 #include "mat2.hpp"
 #include <cmath>
+#include <iostream>
 
 //User construktor
 Mat2::Mat2(float a, float b, float c, float d) :
@@ -74,7 +75,23 @@ Vec2 operator *( Vec2 const & v , Mat2 const & m )
 //Inverse berechnen
 Mat2 inverse ( Mat2 const & m )
 {
-	return Mat2{};
+	if (m.det() == 0.0f)
+	{
+		std::cout << "Fehler: Matrix ist nicht invertierbar, det = 0";
+		return m;
+	}
+	else
+	{
+		Mat2 res{};
+		float det = m.det();
+
+		res.v11_ = m.v22_ / det;
+	 	res.v12_ = -m.v12_ / det;
+		res.v21_ = -m.v21_ / det;
+		res.v22_ = m.v11_ / det;
+
+		return res;
+	}
 }
 
 // Matrix transponieren

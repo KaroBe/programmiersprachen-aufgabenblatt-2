@@ -7,7 +7,6 @@
 
 struct Mat2
 {
-public:
 	Mat2();
 	Mat2(float a, float b, float c, float d);
 
