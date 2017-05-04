@@ -334,20 +334,20 @@ TEST_CASE("describe_transpose_matrix", "[Mat2]")
 	Mat2 res1 = transpose(mat1);
 	Mat2 res2 = transpose(mat2);
 
-	REQUIRE(1.0f == res1.v11_);
-	REQUIRE(0.0f == res1.v12_);
-	REQUIRE(1.0f == res1.v21_);
-	REQUIRE(0.0f == res1.v22_);
+	REQUIRE(1.0f == res0.v11_);
+	REQUIRE(0.0f == res0.v12_);
+	REQUIRE(0.0f == res0.v21_);
+	REQUIRE(1.0f == res0.v22_);
 
 	REQUIRE(1.0f == res1.v11_);
 	REQUIRE(3.0f == res1.v12_);
 	REQUIRE(2.0f == res1.v21_);
 	REQUIRE(4.0f == res1.v22_);
 	
-	REQUIRE(0.0f == res1.v11_);
-	REQUIRE(0.1f == res1.v12_);
-	REQUIRE(0.5f == res1.v21_);
-	REQUIRE(-1.0f == res1.v22_);
+	REQUIRE(0.0f == res2.v11_);
+	REQUIRE(0.1f == res2.v12_);
+	REQUIRE(0.5f == res2.v21_);
+	REQUIRE(-1.0f == res2.v22_);
 }
 
 /*
