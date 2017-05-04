@@ -241,12 +241,169 @@ TEST_CASE("describe_*_operator_matrix", "[Mat2]")
 {
 	Mat2 mat0 {};
 	Mat2 mat1 {1,2,3,4};
-	Mat2 mat2 {0,0.5,1.5,-1};
+	Mat2 mat2 {0,0.5,0.1,-1};
 
+	Mat2 res1 = mat0 * mat1;
+	Mat2 res2 = mat1 * mat2;
 
+	REQUIRE(1.0f == res1.v11_);
+	REQUIRE(2.0f == res1.v12_);
+	REQUIRE(3.0f == res1.v21_);
+	REQUIRE(4.0f == res1.v22_);
+	
+	REQUIRE(0.2f == res2.v11_);
+	REQUIRE(-1.5f == res2.v12_);
+	REQUIRE(0.4f == res2.v21_);
+	REQUIRE(-2.5f == res2.v22_);
 }
 
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
 }
+
+/*
+
+TEST CASE for Matrix * Vektor / Vetor * Matrix
+*/
+
+TEST_CASE("describe_matrix*vektor", "[Mat2]")
+{
+	Mat2 mat1 {1,2,3,4};
+	Mat2 mat2 {0,0.5,0.1,-1};
+
+	Vec2 vec1 {1,2};
+
+	Vec2 res1 = mat1 * vec1;
+	Vec2 res2 = mat2 * vec1;
+
+	REQUIRE(5.0f == res1.x_);
+	REQUIRE(11.0f == res1.y_);
+	
+	REQUIRE(1.0f == res2.x_);
+	REQUIRE(-1.9f == res2.y_);
+}
+
+
+TEST_CASE("describe_vektor*matrix", "[Mat2]")
+{
+	Mat2 mat1 {1,2,3,4};
+	Mat2 mat2 {0,0.5,0.1,-1};
+
+	Vec2 vec1 {1,2};
+
+	Vec2 res1 = vec1 * mat1;
+	Vec2 res2 = vec1 * mat2;
+
+	REQUIRE(5.0f == res1.x_);
+	REQUIRE(11.0f == res1.y_);
+	
+	REQUIRE(1.0f == res2.x_);
+	REQUIRE(-1.9f == res2.y_);
+}
+
+
+/*
+
+TEST CASE for Matrix
+
+Determinante, Inverse,
+Transponierte, Rotationsmatrix
+
+*/
+
+
+TEST_CASE("describe_det_matrix", "[Mat2]")
+{
+	Mat2 mat0 {};
+	Mat2 mat1 {1,2,3,4};
+	Mat2 mat2 {0,0.5,0.1,-1};
+
+	REQUIRE(1.0f == mat0.det());
+	REQUIRE(-2.0f == mat1.det());
+	REQUIRE(-0.05f == mat2.det());
+}
+
+TEST_CASE("describe_transpose_matrix", "[Mat2]")
+{
+	Mat2 mat0 {};
+	Mat2 mat1 {1,2,3,4};
+	Mat2 mat2 {0,0.5,0.1,-1};
+
+	Mat2 res0 = transpose(mat0);
+	Mat2 res1 = transpose(mat1);
+	Mat2 res2 = transpose(mat2);
+
+	REQUIRE(1.0f == res1.v11_);
+	REQUIRE(0.0f == res1.v12_);
+	REQUIRE(1.0f == res1.v21_);
+	REQUIRE(0.0f == res1.v22_);
+
+	REQUIRE(1.0f == res1.v11_);
+	REQUIRE(3.0f == res1.v12_);
+	REQUIRE(2.0f == res1.v21_);
+	REQUIRE(4.0f == res1.v22_);
+	
+	REQUIRE(0.0f == res1.v11_);
+	REQUIRE(0.1f == res1.v12_);
+	REQUIRE(0.5f == res1.v21_);
+	REQUIRE(-1.0f == res1.v22_);
+}
+
+/*
+TEST_CASE("describe_inverse_matrix", "[Mat2]")
+{
+	Mat2 mat0 {};
+	Mat2 mat1 {1,2,3,4};
+	Mat2 mat2 {0,0.5,0.1,-1};
+
+	Mat2 res0 = inverse(mat0);
+	Mat2 res1 = inverse(mat1);
+	Mat2 res2 = inverse(mat2);
+
+	REQUIRE(0.0f == res0.v11_);
+	REQUIRE(1.0f == res0.v12_);
+	REQUIRE(0.0f == res0.v21_);
+	REQUIRE(1.0f == res0.v22_);
+
+	REQUIRE(1.0f == res1.v11_);
+	REQUIRE(2.0f == res1.v12_);
+	REQUIRE(3.0f == res1.v21_);
+	REQUIRE(4.0f == res1.v22_);
+
+	REQUIRE(1.0f == res2.v11_);
+	REQUIRE(2.0f == res2.v12_);
+	REQUIRE(3.0f == res2.v21_);
+	REQUIRE(4.0f == res2.v22_);
+
+}
+
+TEST_CASE("describe_rotate_matrix", "[Mat2]")
+{
+	Mat2 mat0 {};
+	Mat2 mat1 {1,2,3,4};
+	Mat2 mat2 {0,0.5,0.1,-1};
+
+	Mat2 trans0 = make_rotation_mat2(phi);
+	Mat2 trans1 = make_rotation_mat2(phi);
+	Mat2 trans2 = make_rotation_mat2(phi);
+
+	REQUIRE(1.0f == res1.v11_);
+	REQUIRE(2.0f == res1.v12_);
+	REQUIRE(3.0f == res1.v21_);
+	REQUIRE(4.0f == res1.v22_);
+
+
+	REQUIRE(1.0f == res1.v11_);
+	REQUIRE(2.0f == res1.v12_);
+	REQUIRE(3.0f == res1.v21_);
+	REQUIRE(4.0f == res1.v22_);
+
+
+	REQUIRE(1.0f == res1.v11_);
+	REQUIRE(2.0f == res1.v12_);
+	REQUIRE(3.0f == res1.v21_);
+	REQUIRE(4.0f == res1.v22_);
+}
+
+*/

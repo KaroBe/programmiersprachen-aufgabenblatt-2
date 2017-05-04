@@ -14,32 +14,32 @@ Vec2::Vec2() :
 
 Vec2& Vec2::operator+=(Vec2 const& v)
 {
-	this->x_ += v.x_;
-	this->y_ += v.y_;
+	x_ += v.x_;
+	y_ += v.y_;
 
 	return *this;
 }
 
 Vec2 & Vec2::operator -= (Vec2 const & v)
 {
-	this->x_ -= v.x_;
-	this->y_ -= v.y_;
+	x_ -= v.x_;
+	y_ -= v.y_;
 
 	return *this;
 }
 
 Vec2 & Vec2::operator *= (float s)
 {
-	this->x_ *= s;
-	this->y_ *= s;
+	x_ *= s;
+	y_ *= s;
 
 	return *this;
 }
 
 Vec2 & Vec2::operator /=( float s )
 {
-	this->x_ /= s;
-	this->y_ /= s;
+	x_ /= s;
+	y_ /= s;
 
 	return *this;
 }
