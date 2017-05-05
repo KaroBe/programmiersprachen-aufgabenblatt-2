@@ -1,19 +1,14 @@
 //tests.cpp (programmiersprache-aufgabenblatt-2)
 
-/*
-
-TESTS FOR
-
-VEC2
-MAT2
-
-*/
-
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
+
 #include "vec2.hpp"
 #include "mat2.hpp"
 #include "color.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
+
 #include <iostream>
 #include <cmath>
 
@@ -445,4 +440,58 @@ TEST_CASE("describe_construstors_color", "[Color]")
 	REQUIRE(0.0f == c2.r_);
 	REQUIRE(0.5f == c2.g_);
 	REQUIRE(1.0f == c2.b_);
+}
+
+/*
+
+TEST CASES for Circle Constructors
+
+*/
+
+TEST_CASE("describe_constructor_getter_circle", "[Circle]")
+{
+	Circle c1
+	{
+		Vec2{1.0f,2.0f},
+		5.0f,
+		Color{0.5f,0.5f,0.5f}
+	};
+
+	REQUIRE(1.0f == c1.getCenter().x_);
+	REQUIRE(2.0f == c1.getCenter().y_);
+
+	REQUIRE(5.0f == c1.getRadius());
+
+	REQUIRE(0.5f == c1.getColor().r_);
+	REQUIRE(0.5f == c1.getColor().g_);
+	REQUIRE(0.5f == c1.getColor().b_);
+
+}
+
+/*
+
+TEST CASES for Rectangle Constructors
+
+*/
+
+
+TEST_CASE("describe_constructor_getter_rectangle", "[Rectangle]")
+{
+	Rectangle c1
+	{
+		Vec2{1.0f,2.0f},
+		Vec2{4.0f,5.0f},
+		Color{0.5f,0.5f,0.5f}
+	};
+
+	REQUIRE(1.0f == c1.getMin().x_);
+	REQUIRE(2.0f == c1.getMin().y_);
+
+	REQUIRE(4.0f == c1.getMax().x_);
+	REQUIRE(5.0f == c1.getMax().y_);
+
+	REQUIRE(0.5f == c1.getColor().r_);
+	REQUIRE(0.5f == c1.getColor().g_);
+	REQUIRE(0.5f == c1.getColor().b_);
+
 }
