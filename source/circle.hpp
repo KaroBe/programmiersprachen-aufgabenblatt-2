@@ -16,6 +16,9 @@ public:
 	float getRadius() const;
 	Color const& getColor() const; //CONST RETÜRN???
 
+	//Circumference
+	float circumference() const; //const, da "inspector"
+
 private:
 	Vec2 center_;
 	float radius_;

@@ -470,6 +470,33 @@ TEST_CASE("describe_constructor_getter_circle", "[Circle]")
 
 /*
 
+TEST CASES for Circle Circumference
+
+*/
+
+TEST_CASE("describe_circumference_circle","[Circle]")
+{
+	Circle c1
+	{
+		Vec2{1.0f,2.0f},
+		5.0f,
+		Color{0.5f,0.5f,0.5f}
+	};
+
+	REQUIRE(31.415927f == Approx(c1.circumference()));
+	
+	Circle c2
+	{
+		Vec2{1.0f,2.0f},
+		10.0f,
+		Color{0.5f,0.5f,0.5f}
+	};
+
+	REQUIRE(62.831853f == Approx(c2.circumference()));
+}
+
+/*
+
 TEST CASES for Rectangle Constructors
 
 */
@@ -494,4 +521,16 @@ TEST_CASE("describe_constructor_getter_rectangle", "[Rectangle]")
 	REQUIRE(0.5f == c1.getColor().g_);
 	REQUIRE(0.5f == c1.getColor().b_);
 
+}
+
+TEST_CASE("describe_circumference_rectangle", "[Rectangle]")
+{
+	Rectangle c1
+	{
+		Vec2{1.0f,2.0f},
+		Vec2{4.0f,5.0f},
+		Color{0.5f,0.5f,0.5f}
+	};
+	
+	REQUIRE(12.0f == Approx(c1.circumference()));
 }

@@ -16,6 +16,9 @@ public:
 	Vec2 const& getMax() const;
 	Color const& getColor() const; //CONST RETÜRN???
 
+	//Circumference
+	float circumference() const; //const, da "inspector"
+
 private:
 	Vec2 min_;
 	Vec2 max_;

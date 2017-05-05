@@ -11,7 +11,7 @@ struct Vec2
 	float x_;
 	float y_; //Unterstrich kennzeichnet Membervariablen
 
-	Vec2& operator += (Vec2 const& v);
+	Vec2 & operator += (Vec2 const& v);
 	Vec2 & operator -= (Vec2 const & v);
 	Vec2 & operator *= (float s);
 	Vec2 & operator /= (float s);

@@ -20,7 +20,7 @@ struct Mat2
 	float v22_;
 
 	//Matrizenmultiplikation
-	Mat2& operator *= (Mat2 const& m);
+	Mat2 & operator *= (Mat2 const& m);
 
 	//Determinante berechnen
 	float det() const;
