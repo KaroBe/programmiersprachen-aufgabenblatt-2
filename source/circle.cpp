@@ -71,8 +71,8 @@ void Circle::draw(Window const& window, Color const& color)
 bool Circle::is_inside(Vec2 point)
 {
 	float distance = sqrt(
-						pow(x_ - point.x_,2.0f)
-						+ pow(y_ - point.y_,2.0f)
+						pow(center_.x_ - point.x_,2.0f)
+						+ pow(center_.y_ - point.y_,2.0f)
 					);
 
 	if(distance < radius_)

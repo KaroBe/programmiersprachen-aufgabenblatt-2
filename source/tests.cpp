@@ -576,8 +576,8 @@ TEST_CASE("describe_is_inside_rectangle", "[Rectangle]")
 {
 	Rectangle square
 	{
-		Vec2 {20.0f,400.0f}, 
-        Vec2 {200.0f,200.0f}, 
+		Vec2 {20.0f,200.0f}, 
+        Vec2 {200.0f,400.0f}, 
         Color {1.0f, 0.0f, 0.0f}
     };
 

@@ -4,6 +4,8 @@
 #include "vec2.hpp"
 #include "color.hpp"
 
+#include <vector>
+
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
@@ -56,12 +58,17 @@ int main(int argc, char* argv[])
     Color color2 {0.0f, 1.0f, 0.0f};
 
     // Draw Rectangle
-    Rectangle square{
+    Rectangle square1{
+
+      Vec2 {20.0f,200.0f}, 
+      Vec2 {200.0f,400.0f},
+      /*
       Vec2 {20.0f,400.0f}, 
       Vec2 {200.0f,200.0f}, 
+      */
       Color {1.0f, 0.0f, 0.0f}
     };
-    square.draw(win);
+    square1.draw(win);
 
     Rectangle square2{
       Vec2 {100.0f,400.0f}, 
@@ -72,14 +79,14 @@ int main(int argc, char* argv[])
     square2.draw(win, color2);
 
     // Draw Circle
-    Circle circle
+    Circle circle1
     {
       Vec2 {400.0f, 400.0f},
       200.0f,
       Color {1.0f, 0.0f, 0.0f} //rot
     };
 
-    circle.draw(win);
+    circle1.draw(win);
     
     Circle circle2
     {
@@ -89,6 +96,36 @@ int main(int argc, char* argv[])
     };
 
     circle2.draw(win, color2);
+
+    //blau zeichenen von Objekten, in denen sich der Mauszeiger
+    //befindet
+
+    //blau
+    Color blau {0.0f, 0.0f, 1.0f};
+
+    //Listen mit Objetkten
+    std::vector<Circle> all_circles = {circle1, circle2};
+    std::vector<Rectangle> all_rectangles = {square1, square2};
+
+    //Mauszeiger
+    Vec2 zeiger {(float)m.first, (float)m.second};
+    
+    //Iteration über Listen mit Objekten, Test ob Mauszeiger
+    //Punkt in Objekt liegt, wenn ja, Objekt blau zeichnen
+
+    for (int unsigned i = 0; i < all_circles.size(); ++i){
+      if(all_circles[i].is_inside(zeiger) == true)
+      {
+        all_circles[i].draw(win,blau);
+      }
+    }
+    
+    for (int unsigned i = 0; i < all_rectangles.size(); ++i){
+      if(all_rectangles[i].is_inside(zeiger) == true)
+      {
+        all_rectangles[i].draw(win,blau);
+      }
+    }    
 
     // Update Window
     win.update();

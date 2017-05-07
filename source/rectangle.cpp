@@ -60,8 +60,8 @@ void Rectangle::draw(Window const& window, Color const& c)
 //is inside
 bool Rectangle::is_inside(Vec2 point)
 {
-	if(point.x_ <= max_.x_ and point.y_ >= min_.y_
-		and point.y_ <= max_.x_ and point.y_ >= min_.y_)
+	if(point.x_ >= min_.x_ and point.x_ <= max_.x_
+		and point.y_ >= min_.y_ and point.y_ <= max_.y_)
 	{
 		return true;
 	}
