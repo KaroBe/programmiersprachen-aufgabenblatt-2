@@ -53,26 +53,45 @@ int main(int argc, char* argv[])
     win.draw_text(10, 5, 35.0f, text);
 
 
-    // Draw Rectangle
-    Rectangle square{Vec2 {20.0f,400.0f}, 
-                    Vec2 {200.0f,200.0f}, 
-                    Color {0.5f,0.5f,0.5f}};
+    Color color2 {0.0f, 1.0f, 0.0f};
 
+    // Draw Rectangle
+    Rectangle square{
+      Vec2 {20.0f,400.0f}, 
+      Vec2 {200.0f,200.0f}, 
+      Color {1.0f, 0.0f, 0.0f}
+    };
     square.draw(win);
 
-    // Draw Circle
-
-    Circle circle{
-      Vec2 {400.0f, 400.0f},
-      200.0f,
+    Rectangle square2{
+      Vec2 {100.0f,400.0f}, 
+      Vec2 {200.0f,500.0f}, 
       Color {1.0f, 0.0f, 0.0f}
     };
 
+    square2.draw(win, color2);
+
+    // Draw Circle
+    Circle circle
+    {
+      Vec2 {400.0f, 400.0f},
+      200.0f,
+      Color {1.0f, 0.0f, 0.0f} //rot
+    };
+
     circle.draw(win);
+    
+    Circle circle2
+    {
+      Vec2 {400.0f, 400.0f},
+      100.0f,
+      Color {1.0f, 0.0f, 0.0f} //rot
+    };
+
+    circle2.draw(win, color2);
 
     // Update Window
     win.update();
   }
-
   return 0;
 }

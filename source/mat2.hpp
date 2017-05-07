@@ -4,6 +4,10 @@
 #define MAT2_HPP
 
 #include "vec2.hpp"
+#include "mat2.hpp"
+
+#include <cmath>
+#include <iostream>
 
 struct Mat2
 {

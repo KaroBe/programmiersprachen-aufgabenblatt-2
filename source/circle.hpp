@@ -4,8 +4,12 @@
 #define CIRCLE_HPP
 
 #include "vec2.hpp"
+#include "mat2.hpp"
 #include "color.hpp"
 #include "window.hpp"
+
+#include <cmath>
+
 
 class Circle
 {
@@ -27,6 +31,7 @@ public:
 	void draw(Window const& window, Color const& color);
 
 	//is point inside the object?
+	bool is_inside(Vec2 point);
 
 private:
 	Vec2 center_;

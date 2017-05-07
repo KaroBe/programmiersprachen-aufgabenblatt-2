@@ -1,12 +1,6 @@
 //circle.cpp (programmiersprache-aufgabenblatt-2)
 
 #include "circle.hpp"
-#include "vec2.hpp"
-#include "mat2.hpp"
-#include "color.hpp"
-#include "window.hpp"
-
-#include <cmath>
 
 //Constructor
 Circle::Circle (Vec2 const& center, float radius, Color const& color):
@@ -39,21 +33,54 @@ float Circle::circumference() const
 //draw
 void Circle::draw(Window const& window)
 {
-	for (int i = 1; i<=360; ++i)
-	{
-		Vec2 p0 {radius_, 0.0f};
-		//2PI = Vollwinkel -> * i/360 = 360 Segmente des Kreises
-		float x = (float)(2.0f * M_PI * (i/360.0f));
-		Mat2 rotMat = make_rotation_mat2 (x);
-		// Mat2 rotMat2 = make_rotation_mat2(2 * M_PI * (i+1/360));
-		Vec2 p1 = rotMat * p0;
-		Vec2 p2 = rotMat * p1;
-		window.draw_line(p1.x_, p1.y_, p2.x_, p2.y_, color_.r_, color_.g_, color_.b_);
-	}
+	draw(window, color_);
 }
 
 //draw with explicit color
 void Circle::draw(Window const& window, Color const& color)
 {
+	//2PI = Vollwinkel -> * i/360 = 360 Segmente des Kreises
+	//Rotationsmatrix berechnen
+	// x = Anz Segmente
+	float x = 48.0f;
+	Mat2 rotMat = make_rotation_mat2 ((float)(2.0f * M_PI / x));
 	
+	//Startpunkt
+	Vec2 p0{radius_, 0.0};		
+
+	for (int i = 1; i <= x; i++){
+		//Endpunkt berechnen
+		Vec2 p1 = rotMat*p0;
+		
+		//Linie zeichnen dazwischen
+		window.draw_line
+			(
+				center_.x_ + p0.x_,
+				center_.y_ + p0.y_,
+				center_.x_ + p1.x_, 
+				center_.y_ + p1.y_, 
+				color.r_, color.g_, color.b_
+			);
+
+		//Startpunkt weiter drehen
+		p0 = rotMat*p0;
+	}
+}
+
+//is inside
+bool Circle::is_inside(Vec2 point)
+{
+	float distance = sqrt(
+						pow(x_ - point.x_,2.0f)
+						+ pow(y_ - point.y_,2.0f)
+					);
+
+	if(distance < radius_)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

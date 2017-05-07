@@ -1,8 +1,6 @@
 //color.cpp (programmiersprache-aufgabenblatt-2)
 
 #include "rectangle.hpp"
-#include "vec2.hpp"
-#include "color.hpp"
 
 //Constructor
 Rectangle::Rectangle (Vec2 const& min, Vec2 const& max, Color const& color):
@@ -36,10 +34,7 @@ float Rectangle::circumference() const
 
 void Rectangle::draw(Window const& window)
 {
-	window.draw_line(min_.x_, min_.y_, max_.x_, min_.y_, color_.r_, color_.g_, color_.b_);
-	window.draw_line(max_.x_, min_.y_, max_.x_, max_.y_, color_.r_, color_.g_, color_.b_);
-	window.draw_line(max_.x_, max_.y_, min_.x_, max_.y_, color_.r_, color_.g_, color_.b_);
-	window.draw_line(min_.x_, max_.y_, min_.x_, min_.y_, color_.r_, color_.g_, color_.b_);
+	draw(window,color_);
 
 }
 
@@ -60,4 +55,18 @@ void Rectangle::draw(Window const& window, Color const& c)
 	window.draw_line(max_.x_, max_.y_, min_.x_, max_.y_, c.r_, c.g_, c.b_);
 	window.draw_line(min_.x_, max_.y_, min_.x_, min_.y_, c.r_, c.g_, c.b_);
 
+}
+
+//is inside
+bool Rectangle::is_inside(Vec2 point)
+{
+	if(point.x_ <= max_.x_ and point.y_ >= min_.y_
+		and point.y_ <= max_.x_ and point.y_ >= min_.y_)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

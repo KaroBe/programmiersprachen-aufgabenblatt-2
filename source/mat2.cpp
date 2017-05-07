@@ -1,8 +1,6 @@
 //mat2.cpp (programmiersprache-aufgabenblatt-2)
 
 #include "mat2.hpp"
-#include <cmath>
-#include <iostream>
 
 //User construktor
 Mat2::Mat2(float a, float b, float c, float d) :

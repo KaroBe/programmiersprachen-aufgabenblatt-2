@@ -497,6 +497,28 @@ TEST_CASE("describe_circumference_circle","[Circle]")
 
 /*
 
+TEST CASES for Circle is point inside
+
+*/
+
+TEST_CASE("describe_is_inside_circle", "[Circle]")
+{
+	Circle circle
+	{
+      Vec2 {400.0f, 400.0f},
+      200.0f,
+      Color {1.0f, 0.0f, 0.0f} //rot
+    };
+
+    Vec2 point1 {300,300};
+    Vec2 point2 {0,0};
+	
+	REQUIRE(true == circle.is_inside(point1));
+	REQUIRE(false == circle.is_inside(point2));
+}
+
+/*
+
 TEST CASES for Rectangle Constructors, Circumference
 
 */
@@ -541,4 +563,27 @@ TEST_CASE("describe_circumference_rectangle", "[Rectangle]")
 	};
 	
 	REQUIRE(12.0f == Approx(c1.circumference()));
+}
+
+/*
+
+TEST CASES for Rectangle is point inside
+
+*/
+
+
+TEST_CASE("describe_is_inside_rectangle", "[Rectangle]")
+{
+	Rectangle square
+	{
+		Vec2 {20.0f,400.0f}, 
+        Vec2 {200.0f,200.0f}, 
+        Color {1.0f, 0.0f, 0.0f}
+    };
+
+    Vec2 point1 {100,300};
+    Vec2 point2 {0,0};
+	
+	REQUIRE(true == square.is_inside(point1));
+	REQUIRE(false == square.is_inside(point2));
 }
