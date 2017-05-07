@@ -497,7 +497,7 @@ TEST_CASE("describe_circumference_circle","[Circle]")
 
 /*
 
-TEST CASES for Rectangle Constructors
+TEST CASES for Rectangle Constructors, Circumference
 
 */
 
@@ -522,6 +522,14 @@ TEST_CASE("describe_constructor_getter_rectangle", "[Rectangle]")
 	REQUIRE(0.5f == c1.getColor().b_);
 
 }
+
+
+/*
+
+TEST CASES for Rectangle Circumference
+
+*/
+
 
 TEST_CASE("describe_circumference_rectangle", "[Rectangle]")
 {

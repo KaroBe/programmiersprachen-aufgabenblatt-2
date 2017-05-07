@@ -5,6 +5,7 @@
 
 #include "vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 
 class Rectangle
 {
@@ -18,6 +19,9 @@ public:
 
 	//Circumference
 	float circumference() const; //const, da "inspector"
+
+	void draw(Window const& window);
+	void draw(Window const& window, Color const& color);
 
 private:
 	Vec2 min_;

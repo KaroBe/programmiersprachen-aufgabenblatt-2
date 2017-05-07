@@ -5,6 +5,7 @@
 
 #include "vec2.hpp"
 #include "color.hpp"
+#include "window.hpp"
 
 class Circle
 {
@@ -18,6 +19,14 @@ public:
 
 	//Circumference
 	float circumference() const; //const, da "inspector"
+
+	//draw
+	void draw(Window const& window);
+
+	//draw with explicit color
+	void draw(Window const& window, Color const& color);
+
+	//is point inside the object?
 
 private:
 	Vec2 center_;
